@@ -15,6 +15,7 @@ Easy Popup Announcement helps you to display popup / pop-over / popup overlay on
 Easy Popup Announcement helps you to display popup / pop-over / popup overlay on your WordPress website. It’s easy to use and straight-forward. Popup content is manageable within content editor, which you can add text, images, or even form like newsletter.
 
 **Features:**
+
 * Plugin Options
 * Responsive Layout Supported – Nicely viewable on mobile devices
 * Cookies – Manage when your popup should be re-appear
@@ -26,14 +27,16 @@ Easy Popup Announcement helps you to display popup / pop-over / popup overlay on
 == Installation ==
 
 **Self installation:**
+
 1. Unzip easy-popup-announcement.zip
-2. Upload to your wp-content/plugins folder
-3. Activate
+1. Upload to your wp-content/plugins folder
+1. Activate
 
 **WordPress Installer:**
+
 1. Go to menu Plugins > Add New
-2. Search for “Easy Popup Announcement”
-3. Once the search result returned, install the plugin and activate
+1. Search for “Easy Popup Announcement”
+1. Once the search result returned, install the plugin and activate
 
 == Frequently Asked Questions ==
 
