@@ -3,7 +3,7 @@
  * Plugin Name: Easy Popup Announcement
  * Plugin URI: http://pupungbp.com/plugins
  * Description: Add simple popup to entire pages or certain page of the website. It has session control, random content, mobile option, and responsive layout support.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: Pupung Budi Purnama
  * Author URI: http://pupungbp.com
  * License: GPL2
