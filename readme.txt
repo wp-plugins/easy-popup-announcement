@@ -3,8 +3,8 @@ Contributors: pupungbp
 Donate link: http://pupungbp.com/donate/
 Tags: popup, overlay, popup over
 Requires at least: 3.7
-Tested up to: 4.0
-Stable tag: 1.0.1
+Tested up to: 4.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,6 +57,11 @@ You can use shortcode [epapop id="ID"], this shortcode also generated automatica
 
 = 1.0.1 =
 * Provide Translation
+
+= 1.0.2 =
+* Added close button
+* Popup padding Option
+* Added "Latest" and "Randomize Option"
 
 == Upgrade Notice ==
 

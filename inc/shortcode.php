@@ -22,7 +22,7 @@ function epa_shortcode_single( $atts ) {
 
 	if(get_option('epa_enable') == 'no') :
 
-		$epa_html .= '<div id="my_popup" class="well">';
+		$epa_html .= '<div id="my_popup" class="well"><span class="my_popup_close"></span>';
 		$epa_html .= $default_popup->post_content;
 		$epa_html .= '</div>';
 

@@ -16,6 +16,7 @@ function epa_register_settings() {
     register_setting('epa-settings', 'epa_enable');
     register_setting('epa-settings', 'epa_default_id');
     register_setting('epa-settings', 'epa_bgcolor');
+    register_setting('epa-settings', 'epa_popup_padding');
     register_setting('epa-settings', 'epa_expire');
 
 }
@@ -51,7 +52,7 @@ function epa_global_custom_options()
                 </tr>
                 <tr valign="top">
                     <th scope="row">
-                        <label for="popup_bg"><?php _e('Default Popup ID', 'easy-popup-announcement'); ?></label>
+                        <label for="popup_bg"><?php _e('Default Popup', 'easy-popup-announcement'); ?></label>
                     </th>
                     <td>
                         <fieldset>
@@ -68,6 +69,14 @@ function epa_global_custom_options()
 						</fieldset>
 					</td>
 				</tr>
+                <tr valign="top">
+                    <th scope="row"><label for="popup-pading"><?php _e('Popup Padding', 'easy-popup-announcement'); ?></label></th>
+                    <td>
+                        <fieldset>
+                             <input type="text" name="epa_popup_padding" value="<?php echo get_option('epa_popup_padding'); ?>" /> pixels
+                        </fieldset>
+                    </td>
+                </tr>
                 <!-- <tr valign="top">
                     <th scope="row"><label for="popup_transition"><?php _e('Transition', 'easy-popup-announcement'); ?></label></th>
                     <td>

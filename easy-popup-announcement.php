@@ -3,7 +3,7 @@
  * Plugin Name: Easy Popup Announcement
  * Plugin URI: http://pupungbp.com/plugins
  * Description: Add simple popup to entire pages or certain page of the website. It has session control, random content, mobile option, and responsive layout support.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Pupung Budi Purnama
  * Author URI: http://pupungbp.com
  * License: GPL2
@@ -38,15 +38,30 @@ add_action ('admin_enqueue_scripts', 'epa_load_admin_script');
  */
 function epa_html_include() {
 
-	$default_popup = get_post(get_option('epa_default_id'));
+	if(get_option('epa_default_id') == 'latest'):
+	$latest_popup = wp_get_recent_posts(array('numberposts' => '1', 'post_type' => 'epapopup'));
+	$popup_content = $latest_popup['0']['post_content'];
+
+	elseif(get_option('epa_default_id') == 'random'):
+	$random_popup = wp_get_recent_posts(array('numberposts' => '1', 'post_type' => 'epapopup', 'orderby' => 'rand'));
+	$popup_content = $random_popup['0']['post_content'];
 	
-	$epa_html = '<button class="my_popup_open">Open popup</button>';
-	$epa_html .= '<div id="my_popup" class="well">';
-	$epa_html .= $default_popup->post_content;
+	else:
+	$default_popup = get_post(get_option('epa_default_id'));
+	$popup_content = $default_popup->post_content;
+	endif;
+	
+	
+	//$epa_html = '<button class="my_popup_open">Open popup</button>';
+	$epa_html .= '<div id="my_popup" class="well"><span class="my_popup_close"></span>';
+	//$epa_html .= $default_popup->post_content;
+	$epa_html .= $popup_content;
 	$epa_html .= '</div>';
 
 	if(!isset($_COOKIE['epa_popup'])) {
+
 		echo $epa_html;
+		//echo $latest_popup['0']['post_content'];
 	}
 
 }
@@ -148,11 +163,12 @@ function get_epa_cpt_id() {
 
 	//Print Dropdown
 	echo '<select name="epa_default_id">';
+	echo '<option value="latest" '.selected( get_option('epa_default_id'), 'latest').' >Latest Popup</option>';
+	echo '<option value="random" '.selected( get_option('epa_default_id'), 'random').' >Randomize</option>';
 	if($get_epa_cpt !== ''):
 	foreach ($get_epa_cpt as $get_epa_cpt_id) {
 		echo '<option value='.$get_epa_cpt_id->ID.''.selected( get_option('epa_default_id'), $get_epa_cpt_id->ID).' > '.$get_epa_cpt_id->ID.' - '.$get_epa_cpt_id->post_title.'</option>';		
 	} else :
-	echo '<option>No Default Popup</option>';
 	endif;
 	echo '</select>';
 }
@@ -168,3 +184,17 @@ function epa_shortcode_init() {
 	add_meta_box( 'epashort', 'Shortcode', 'epa_shortcode_meta', 'epapopup', 'side' );
 }
 add_action( 'add_meta_boxes', 'epa_shortcode_init' );
+
+/*
+ * Insert Overide Styling
+ */
+function epa_overide_style() {
+if(get_option('epa_popup_padding')):
+
+	echo '<style type="text/css">';
+	echo '.well {padding: '. get_option('epa_popup_padding') .'px !important}';
+	echo '</style>';
+
+endif;
+}
+add_action('wp_head', 'epa_overide_style');
